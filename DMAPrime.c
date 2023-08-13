@@ -1,42 +1,49 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int isPrime (int no);
+
 int main()
 {
-    int *arr;
-    int size, i, sum=0, j;
+    int n, sum=0, i;
+    printf ("Enter the number of elements you want in your array: ");
+    scanf ("%d", &n);
 
-    printf("Enter size of the array: ");
-    scanf("%d", &size);
+    int* arr = (int*)malloc(n* sizeof(int));
 
-    arr = (int*)malloc(size*sizeof(int));
-
-    for (i = 0; i < size; i++)
+    for (i=0; i<n; i++)
     {
-        printf("Enter element %d: ", i+1);
-        scanf("%d", (arr + i));
+        printf ("Enter element number %d: ", i+1);
+        scanf ("%d", &arr[i]);
     }
 
-    printf("\nEntered array elements are:\n");
-    for (i = 0; i < size; i++)
+    for (i=0; i<n; i++)
     {
-        printf("%d  ", *(arr + i));
-    }
-
-    for (i = 0; i < size; i++)
-    {
-        for (j=2; j<(*arr(i+1)/2); j++)
+        if (isPrime(arr[i]))
         {
-        	if (*(arr+i)%j != 0)
-        	{
-        		sum += *(arr + i);
-        	}
+            sum += arr[i];
         }
     }
-    printf("Sum of prime elements is: %d", sum);
 
-    free(arr);
-
+    printf ("The sum of all prime numbers in the array is: %d", sum);
+    
     return 0;
 }
 
+int isPrime (int no)
+{
+    if (no<=1)
+    {
+        return 0;
+    }
+    
+    for (int i=2; i*i<=no; i++)
+    {
+        if (no % i == 0)
+        {
+            return 0;
+        }
+    }
+
+     return 1;
+}
