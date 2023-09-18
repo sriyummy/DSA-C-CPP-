@@ -194,30 +194,36 @@ void display() {
     }
 }
 
-void search() {
+void search()
+{
     struct Node* ptr;
     int item, i = 0, flag;
     ptr = head;
 
-    if (ptr == NULL) {
+    if (ptr == NULL)
+    {
         std::cout << "\nEmpty List" << std::endl;
     } else {
         std::cout << "\nEnter item which you want to search?" << std::endl;
         std::cin >> item;
 
-        while (ptr != NULL) {
-            if (ptr->data == item) {
+        while (ptr != NULL)
+        {
+            if (ptr->data == item)
+            {
                 std::cout << "\nItem found at location " << i + 1 << std::endl;
                 flag = 0;
                 break;
-            } else {
+            } else
+            {
                 flag = 1;
             }
             i++;
             ptr = ptr->next;
         }
 
-        if (flag == 1) {
+        if (flag == 1)
+        {
             std::cout << "\nItem not found" << std::endl;
         }
     }
